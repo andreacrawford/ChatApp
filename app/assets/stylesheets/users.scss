@@ -1,3 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-container {
+  background-color: #7D7D7E;
+  width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.login-header {
+  color: white;
+}
+
+.login-button {
+  width: 100%;
+  text-align: center;
+}
