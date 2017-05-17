@@ -1,11 +1,15 @@
 <header>Rooms</header>
 
 <div class="page-content">
-  <% @rooms.each do |room| %>
-    <%= link_to room.title, room %>
-    <%= link_to 'Edit', edit_room_path(room) %>
-    <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+  <ul>
+    <% @rooms.each do |room| %>
+      <li>
+        <%= link_to room.title, room %>
+        <%= link_to 'Edit', edit_room_path(room) %>
+        <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
 
 
   <br>
