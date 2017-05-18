@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   get 'rooms/index'
   root 'rooms#index'
+
+  mount ActionCable.server => '/cable'
+  
 end
