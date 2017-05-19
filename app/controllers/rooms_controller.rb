@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find_by(id: params[:id])
     @messages = @room.messages.order("created_at ASC")
+    @user = current_user
   end
 
   # GET /rooms/new

@@ -28,7 +28,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
 
 });
 
-$(document).on("turbolinks:load", function() {
+$(document).on("turbolinks:load ajaxSuccess", function() {
   App.room.listen_to_messages();
   //App.room.send_message();
 

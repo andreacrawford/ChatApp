@@ -1,7 +1,5 @@
-<div class="message">
-      <div class="row">
-        <hr>
-        <p><%= @user %></p>
-        <p><%= @message %></p>
-      </div>
+<div class="messages">
+  <% @messages.each do |message| %>
+    <%= render partial: "messages/message", locals: {message: message} %>
+  <% end %>
 </div>
