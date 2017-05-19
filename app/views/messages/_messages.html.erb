@@ -1,5 +1,5 @@
 <div class="messages">
   <% @messages.each do |message| %>
-    <%= render partial: "messages/message", locals: {message: message} %>
+    <%= render partial: "messages/message", locals: {message: @message, user: @user.first_name } %>
   <% end %>
 </div>
