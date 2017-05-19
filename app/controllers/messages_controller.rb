@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
     @message = @room.messages.new(message_params)
-    @message.user = current_user
+    @user = current_user.first_name
 
     if @message.save
       #ActionCable.server.broadcast 'room_channel', message: @message.body, user: @message.user.first_name
