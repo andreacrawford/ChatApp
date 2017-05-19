@@ -7,17 +7,29 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     // Called when the subscription has been terminated by the server
   },
 
-  received: function() {
+  received: function(data) {
     // Called when there's incoming data on the websocket for this channel
+    $(".message").prepend(data.message);
   },
 
-  listen_to_message: function() {
+  listen_to_messages: function() {
     return this.perform('listen', {
       room_id: $("[data-room-id]").data("room-id")
     });
   }
+
+
+// send_message: function(message, room_id) {
+ //       return this.perform('send_message', {
+  //        message: message,
+ //         room_id: room_id
+ //       });
+  //    }
+
 });
 
 $(document).on("turbolinks:load", function() {
-  App.room.listen_to_comments();
+  App.room.listen_to_messages();
+  //App.room.send_message();
+
 });
