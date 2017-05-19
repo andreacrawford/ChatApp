@@ -2,22 +2,23 @@
   <%= @room.title %>
 </header>
 
-<div class="chat-container">
+<div class="container-fluid chat-container">
+  <div class="row" data-room-id="<@room_id>">
 
-<div class="panel panel-default">
-  <% if @room.messages.any? %>
-    <div class="panel-body" id="messages">
-      <%= render partial: 'messages/messages', collection: @room.messages %>
+    <div class="panel panel-default">
+      <% if @room.messages.any? %>
+        <div class="panel-body" id="messages">
+          <%= render partial: 'messages/messages', collection: @room.messages %>
+        </div>
+      <%else%>
+        <div class="panel-body hidden" id="messages">
+        </div>
+      <%end%>
     </div>
-  <%else%>
-    <div class="panel-body hidden" id="messages">
-    </div>
-  <%end%>
+     <%= render partial: 'messages/message_form', locals: {message: @message, room: @room} %>
+  </div>
 </div>
 
- <%= render partial: 'messages/message_form', locals: {message: @message, room: @room} %>
-</div>
-</div>
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>

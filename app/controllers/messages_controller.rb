@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
     @message = @room.messages.new(message_params)
     @message.user = current_user
 
-
     if @message.save
-      #do somehting
+      #ActionCable.server.broadcast 'room_channel', message: @message.body, user: @message.user.first_name
+      RoomChannel.broadcast_to @room.id, message: @message.body, user: @message.user.first_name
     else
       redirect_to rooms_path
     end
