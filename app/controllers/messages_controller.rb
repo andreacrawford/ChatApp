@@ -6,10 +6,11 @@ class MessagesController < ApplicationController
     @user = current_user
     respond_to do |format|
 
-
-      if @message.save
+      if @message.save!
         #ActionCable.server.broadcast 'room_channel', message: @message.body, user: @message.user.first_name
         RoomChannel.broadcast_to(@room.id, message: MessagesController.render(partial:'messages/message', locals: {message: @message, user: @user}))
+        format.html { redirect_to @room }
+        format.json { render :show, status: :created, location: @room }
         format.js
       else
         redirect_to rooms_path
