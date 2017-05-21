@@ -6,18 +6,13 @@
   <div class="row" data-room-id="<@room_id>">
 
     <div class="panel panel-default">
-      <% if @room.messages.any? %>
-        <div class="panel-body" id="messages">
-          <% @messages.each do |message| %>
-            <%= render partial: 'messages/messages', locals: { message: @message, user: @user } %>
-          <% end %>
-        </div>
-      <%else%>
-        <div class="panel-body hidden" id="messages">
-        </div>
-      <%end%>
+      <div class="panel-body" id="messages">
+        <% @messages.each do |message| %>
+          <%= render partial: 'messages/message', locals: { message: message } %>
+        <% end %>
+      </div>
     </div>
-     <%= render partial: 'messages/message_form', locals: {message: @message, room: @room} %>
+     <%= render partial: 'messages/form', locals: {room: @room} %>
   </div>
 </div>
 
